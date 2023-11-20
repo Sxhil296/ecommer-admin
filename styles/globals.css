@@ -17,26 +17,29 @@ select:focus {
   @apply border-blue-900;
 }
 h1 {
-  @apply text-gray-800 mb-4 text-xl;
+  @apply text-blue-900 mb-2 text-xl;
 }
 label {
-  @apply text-gray-600 text-sm;
+  @apply text-blue-900 text-sm;
 }
 .btn-primary {
-  @apply bg-blue-900 text-white px-4 py-1 rounded-sm shadow-sm;
+  @apply bg-blue-900 text-white px-4 py-1 rounded-md shadow-sm;
 }
 table.basic {
-  @apply w-full bg-white rounded-sm shadow-md;
+  @apply w-full;
 }
-table.basic thead tr td,
+table.basic thead tr td{
+  @apply bg-blue-100;
+}
+/* table.basic thead tr td,
 table.basic thead tr th {
   @apply text-sm text-gray-600 uppercase border-b border-gray-200 px-4 py-2;
-}
+} */
 table.basic tr td {
-  @apply px-4 py-1;
+  @apply border border-blue-200 p-1;
 }
 table.basic a {
-  @apply px-4 rounded-sm inline-flex mx-1 items-center gap-1 text-sm py-1;
+  @apply bg-blue-900 text-white text-sm py-1 px-2 rounded-md inline-flex gap-1 mr-1;
 }
 .btn-default,
 .btn-red {

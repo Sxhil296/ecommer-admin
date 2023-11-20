@@ -5,6 +5,8 @@ export default async function handle(req, res) {
   const method = req.method;
   await mongooseConnect();
 
+
+  //get products
   if (method === "GET") {
     if (req.query?.id) {
       res.json(await Product.findOne({ _id: req.query.id }));
@@ -13,6 +15,7 @@ export default async function handle(req, res) {
     }
   }
 
+  //save products
   if (method === "POST") {
     const { title, description, price } = req.body;
     const productDoc = await Product.create({
@@ -21,7 +24,13 @@ export default async function handle(req, res) {
       price,
     });
     res.json(productDoc);
-  } else {
-    res.status(405).json({ error: "Method Not Allowed" }); // Handling other HTTP methods
+  }
+
+
+  //update products
+  if (method === "PUT") {
+    const { title, description, price, _id } = req.body;
+    await Product.updateOne({ _id }, { title, description, price });
+    res.json(true);
   }
 }

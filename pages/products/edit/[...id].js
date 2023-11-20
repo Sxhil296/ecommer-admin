@@ -22,7 +22,7 @@ const EditProductPage = () => {
   return (
     <Layout>
       <h1>Edit Product</h1>
-      <ProductForm {...productInfo} />
+      {productInfo && <ProductForm {...productInfo} />}
     </Layout>
   );
 };
