@@ -15,7 +15,7 @@ export default async function handle(req, res) {
     }
   }
 
-  //save products
+  //save product
   if (method === "POST") {
     const { title, description, price } = req.body;
     const productDoc = await Product.create({
@@ -32,5 +32,13 @@ export default async function handle(req, res) {
     const { title, description, price, _id } = req.body;
     await Product.updateOne({ _id }, { title, description, price });
     res.json(true);
+  }
+
+  //delete product
+  if(method === 'DELETE'){
+    if (req.query?.id) {
+      await Product.deleteOne({ _id: req.query?.id })
+      res.json(true)
+    } 
   }
 }

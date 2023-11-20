@@ -7,11 +7,17 @@ const ProductForm = ({
   title: existingTitle,
   description: existingDescription,
   price: existingPrice,
+  images: existingImages,
+  category: assignedCategory,
+  properties: assignedProperties,
 }) => {
   const [title, setTitle] = useState(existingTitle || "");
   const [description, setDescription] = useState(existingDescription || "");
   const [price, setPrice] = useState(existingPrice || "");
   const [goToProducts, setGoToProducts] = useState(false);
+  const [images, setImages] = useState(existingImages || []);
+  const [isUploading, setIsUploading] = useState(false);
+  const [categories, setCategories] = useState([]);
   const router = useRouter();
   // console.log({ _id });
 
@@ -25,7 +31,6 @@ const ProductForm = ({
     } else {
       // create
       await axios.post("/api/products", data);
-      // setGoToProducts(true);
     }
     setGoToProducts(true);
   }
@@ -42,6 +47,10 @@ const ProductForm = ({
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
+      <label>Photos </label>
+      <div className="mb-2">
+        {!images?.length && <div>No photos for this product</div>}
+      </div>
       <label htmlFor="">Description</label>
       <textarea
         placeholder="description"
